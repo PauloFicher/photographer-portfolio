@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { ChevronLeft, ChevronRight, Quote } from 'lucide-react';
-import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
+
 import { testimonials } from '../../data/testimonials';
 import { AnimatedSection } from '../ui/AnimatedSection';
 
