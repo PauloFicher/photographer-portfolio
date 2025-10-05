@@ -1,14 +1,10 @@
-import React, { useRef } from 'react';
-import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
+import React from 'react';
 import { AnimatedSection } from '../ui/AnimatedSection';
 
 export const AboutSection: React.FC = () => {
-  
-
   return (
     <section 
       id="sobre-mi" 
-      
       className="py-20 md:py-32 lg:py-40 px-6 bg-gradient-to-b from-gray-50 to-white relative"
     >
       <div className="max-w-6xl mx-auto">
@@ -18,7 +14,7 @@ export const AboutSection: React.FC = () => {
           <AnimatedSection animation="slideLeft" delay={200}>
             <div className="relative rounded-3xl overflow-hidden shadow-xl bg-gray-200 aspect-[3/4] max-w-md mx-auto lg:mx-0">
               <img 
-                src="/assets/aboutme.jpg"
+                src="/assets/about-photo.jpg"
                 alt="Sobre mí"
                 className="absolute inset-0 w-full h-full object-cover"
               />
