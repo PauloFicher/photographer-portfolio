@@ -11,3 +11,10 @@
   --font-family-serif: 'Cormorant Garamond', serif;
   --font-family-sans: 'Inter', sans-serif;
 }
+/* Animación reveal-text */
+
+
+/* Utility para hover scale */
+.hover\:scale-102:hover {
+  transform: scale(1.02);
+}

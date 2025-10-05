@@ -1,3 +1,4 @@
+// src/components/gallery/ImageGrid.tsx
 import React from 'react';
 import { ImageCard } from './ImageCard';
 import type { GalleryImage } from '../../types';
@@ -19,14 +20,18 @@ export const ImageGrid: React.FC<ImageGridProps> = ({ images, onImageClick }) =>
   }
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-4 auto-rows-[200px] gap-4">
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-20">
       {images.map((image, index) => (
-        <ImageCard 
-          key={image.id} 
-          image={image} 
-          onClick={() => onImageClick(index)}
-          index={index}
-        />
+        <div
+          key={image.id}
+          className="aspect-square" // Todas las imágenes cuadradas y simétricas
+        >
+          <ImageCard 
+            image={image} 
+            onClick={() => onImageClick(index)}
+            index={index}
+          />
+        </div>
       ))}
     </div>
   );
