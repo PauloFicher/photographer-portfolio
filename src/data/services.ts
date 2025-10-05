@@ -1,4 +1,4 @@
-import { Heart, Cake, Users, Baby, Building2, Camera } from 'lucide-react';
+import { Heart, Cake, Users, Baby, Building2 } from 'lucide-react';
 
 interface Service {
   id: string;
