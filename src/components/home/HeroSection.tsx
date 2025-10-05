@@ -51,7 +51,7 @@ export const HeroSection: React.FC = () => {
               <AnimatedSection animation="scaleIn" delay={300} className="row-span-2">
                 <div className="relative h-full min-h-[400px] md:min-h-[500px] lg:min-h-[800px] rounded-2xl md:rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
                   <img 
-                    src="/assets/bannergrid3.jpg"
+                    src="/assets/verticalbanner.webp"
                     alt="Fotografía principal"
                     className="absolute inset-0 w-full h-full object-cover"
                   />
@@ -62,7 +62,7 @@ export const HeroSection: React.FC = () => {
               <AnimatedSection animation="fadeUp" delay={500}>
                 <div className="relative h-48 md:h-60 lg:h-72 rounded-2xl md:rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
                   <img 
-                    src="/assets/bannergrid1.jpg"
+                    src="/assets/banner1.webp"
                     alt="Fotografía de retrato"
                     className="absolute inset-0 w-full h-full object-cover"
                   />
@@ -73,7 +73,7 @@ export const HeroSection: React.FC = () => {
               <AnimatedSection animation="fadeUp" delay={700}>
                 <div className="relative h-48 md:h-60 lg:h-72 rounded-2xl md:rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
                   <img 
-                    src="/assets/bannergrid2.jpg"
+                    src="/assets/banner2.webp"
                     alt="Fotografía artística"
                     className="absolute inset-0 w-full h-full object-cover"
                   />

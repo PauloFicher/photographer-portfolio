@@ -4,6 +4,7 @@ export interface Service {
   title: string;
   description: string;
   color: string;
+  image: string; // NUEVO
 }
 
 export interface GalleryImage {

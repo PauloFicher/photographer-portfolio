@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { services } from '../../data/services';
 import { AnimatedSection } from '../ui/AnimatedSection';
+import { ArrowUpRight } from 'lucide-react';
 
 export const ServicesSection: React.FC = () => {
-  const [_activeService, setActiveService] = useState<number | null>(null);
-
   return (
     <section 
       id="servicios" 
@@ -13,7 +12,8 @@ export const ServicesSection: React.FC = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-50/20 to-transparent" />
       
       <div className="max-w-7xl mx-auto relative z-10">
-        <AnimatedSection animation="fadeUp" delay={100} className="mb-12 md:mb-20 lg:mb-24 max-w-3xl">
+        {/* Título centrado */}
+        <AnimatedSection animation="fadeUp" delay={100} className="mb-12 md:mb-20 lg:mb-24 text-center max-w-3xl mx-auto">
           <h2 className="font-serif text-4xl md:text-6xl lg:text-7xl font-light mb-4 md:mb-6 leading-tight text-gray-900">
             Mis
             <br />
@@ -24,7 +24,8 @@ export const ServicesSection: React.FC = () => {
           </p>
         </AnimatedSection>
         
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 lg:gap-6">
+        {/* Grid con cards más pequeñas */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-3 md:gap-4">
           {services.map((service, index) => (
             <AnimatedSection 
               key={service.id}
@@ -32,25 +33,43 @@ export const ServicesSection: React.FC = () => {
               delay={200 + (index * 150)}
             >
               
-              <a  href="#contacto"
-                className="group relative overflow-hidden rounded-xl md:rounded-2xl bg-gradient-to-br backdrop-blur-xl border-2 border-gray-200 hover:border-gray-400 hover:shadow-xl transition-all duration-700 cursor-pointer block"
-                style={{ backgroundImage: `linear-gradient(to bottom right, ${service.color})` }}
-                onMouseEnter={() => setActiveService(index)}
-                onMouseLeave={() => setActiveService(null)}
+            <a    href="#contacto"
+                className="group relative overflow-hidden rounded-2xl md:rounded-3xl cursor-pointer block aspect-[3/4]"
               >
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/40 to-transparent" />
-                  <div className="shimmer absolute inset-0" />
+                {/* Imagen de fondo */}
+                <div className="absolute inset-0">
+                  <img 
+                    src={service.image}
+                    alt={service.title}
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
                 </div>
+
+                {/* Gradiente overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
                 
-                <div className="relative p-6 md:p-8 lg:p-10 flex flex-col items-center justify-center text-center min-h-[160px] md:min-h-[200px] lg:min-h-[220px]">
-                  <service.icon className="w-10 h-10 md:w-14 md:h-14 lg:w-16 lg:h-16 mb-4 md:mb-6 text-gray-600 group-hover:text-gray-900 group-hover:scale-110 transition-all duration-500" />
-                  <h3 className="font-serif text-lg md:text-2xl lg:text-3xl font-light tracking-wide text-gray-900">
-                    {service.title}
-                  </h3>
+                {/* Contenido */}
+                <div className="absolute inset-0 p-4 md:p-6 flex flex-col justify-between">
+                  {/* Icono superior */}
+                  <div className="flex justify-end">
+                    <div className="w-8 h-8 md:w-10 md:h-10 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
+                      <ArrowUpRight className="w-4 h-4 md:w-5 md:h-5 text-white" />
+                    </div>
+                  </div>
+
+                  {/* Título y descripción */}
+                  <div className="transform transition-all duration-500 group-hover:-translate-y-2">
+                    <h3 className="font-serif text-xl md:text-2xl lg:text-3xl font-light text-white mb-2 transition-all duration-500 group-hover:text-purple-200">
+                      {service.title}
+                    </h3>
+                    <p className="font-sans text-xs md:text-sm text-white/90 leading-relaxed transition-all duration-500 group-hover:text-white">
+                      {service.description}
+                    </p>
+                  </div>
                 </div>
-                
-                <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-gray-900 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700" />
+
+                {/* Borde animado */}
+                <div className="absolute inset-0 border-2 border-white/0 group-hover:border-white/30 rounded-2xl md:rounded-3xl transition-all duration-500" />
               </a>
             </AnimatedSection>
           ))}

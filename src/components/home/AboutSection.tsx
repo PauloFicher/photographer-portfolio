@@ -14,7 +14,7 @@ export const AboutSection: React.FC = () => {
           <AnimatedSection animation="slideLeft" delay={200}>
             <div className="relative rounded-3xl overflow-hidden shadow-xl bg-gray-200 aspect-[3/4] max-w-md mx-auto lg:mx-0">
               <img 
-                src="/assets/about-photo.jpg"
+                src="/assets/aboutme.jpg"
                 alt="Sobre mí"
                 className="absolute inset-0 w-full h-full object-cover"
               />
@@ -35,17 +35,7 @@ export const AboutSection: React.FC = () => {
               </p>
             </AnimatedSection>
 
-            <AnimatedSection animation="fadeUp" delay={600}>
-              <p className="font-sans text-base md:text-lg text-gray-700 leading-relaxed">
-                Soy del tipo de fotógrafos a los que no les importa tanto la herramienta, sino las ideas y las relaciones interpersonales, siempre y cuando haya luz, seré feliz.
-              </p>
-            </AnimatedSection>
-
-            <AnimatedSection animation="fadeUp" delay={750}>
-              <p className="font-sans text-base md:text-lg text-gray-700 leading-relaxed">
-                Por cierto, tengo un canal de YouTube donde enseño todo lo que sé...
-              </p>
-            </AnimatedSection>
+            
 
             <AnimatedSection animation="fadeUp" delay={900}>
               <div className="pt-4">
