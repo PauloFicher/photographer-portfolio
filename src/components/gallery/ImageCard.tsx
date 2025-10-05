@@ -9,7 +9,7 @@ interface ImageCardProps {
   index: number;
 }
 
-export const ImageCard: React.FC<ImageCardProps> = ({ image, onClick, index }) => {
+export const ImageCard: React.FC<ImageCardProps> = ({ image, onClick }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
   const [imageError, setImageError] = useState(false);
 
