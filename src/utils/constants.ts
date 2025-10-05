@@ -4,7 +4,7 @@ export const SCROLL_THRESHOLD = 0.1;
 export const CONTACT_INFO = {
   phone: '+595 XXX XXX XXX',
   email: 'contacto@atelier.com',
-  instagram: '#',
+  instagram: 'https://www.instagram.com/sb_fotografia.py/',
   facebook: '#'
 };
 

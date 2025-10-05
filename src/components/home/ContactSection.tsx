@@ -1,117 +1,200 @@
 import React, { useState, useRef } from 'react';
-import { Phone, Mail, Instagram, Facebook, ArrowRight } from 'lucide-react';
+import { Phone, Instagram, Facebook, ArrowRight, MessageCircle } from 'lucide-react';
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
 import { CONTACT_INFO } from '../../utils/constants';
-import type { FormData } from '../../types';
 
 export const ContactSection: React.FC = () => {
-  const [formData, setFormData] = useState<FormData>({ name: '', email: '', message: '' });
+  const [formData, setFormData] = useState({
+    name: '',
+    whatsapp: '',
+    service: '',
+    message: ''
+  });
+  
   const sectionRef = useRef<HTMLDivElement>(null);
   const isVisible = useIntersectionObserver(sectionRef, { threshold: 0.1 });
 
+  const services = [
+    'Bodas',
+    'Quince Años',
+    'Cumpleaños Infantiles',
+    'Cumpleaños de Adultos',
+    'Primer Año & Bautismo',
+    'Corporativas y Empresariales',
+    'Sesiones de Fotos',
+    'Otro'
+  ];
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    alert('Mensaje enviado correctamente');
-    setFormData({ name: '', email: '', message: '' });
+    
+    // Crear mensaje para WhatsApp
+    const mensaje = `Hola! Mi nombre es ${formData.name}.\n\nEstoy interesado en: ${formData.service}\n\nDetalles: ${formData.message}`;
+    const mensajeCodificado = encodeURIComponent(mensaje);
+    const numeroWhatsApp = '595981234567'; // Reemplazar con el número real
+    
+    // Abrir WhatsApp
+    window.open(`https://wa.me/${numeroWhatsApp}?text=${mensajeCodificado}`, '_blank');
+    
+    // Limpiar formulario
+    setFormData({ name: '', whatsapp: '', service: '', message: '' });
   };
 
   return (
     <section 
       id="contacto" 
       ref={sectionRef}
-      className="py-40 px-6 bg-gradient-to-b from-white to-gray-50"
+      className="py-20 md:py-32 px-4 md:px-6 bg-gradient-to-b from-white to-gray-50"
     >
       <div className="max-w-5xl mx-auto">
-        <div className={`reveal-text ${isVisible ? 'visible' : ''} text-center mb-24`}>
-          <h2 className="font-serif text-7xl md:text-8xl font-light mb-6 leading-tight text-gray-900">
+        <div className={`reveal-text ${isVisible ? 'visible' : ''} text-center mb-12 md:mb-16`}>
+          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-light mb-4 leading-tight text-gray-900">
             Conversemos
           </h2>
-          <p className="font-sans text-lg text-gray-600 leading-relaxed max-w-2xl mx-auto">
-            Cada proyecto comienza con una conversación. Cuéntanos tu visión
+          <p className="font-sans text-sm md:text-base text-gray-600 leading-relaxed max-w-2xl mx-auto">
+            Cuéntanos sobre tu proyecto y te contactaremos
           </p>
         </div>
         
-        <div className={`reveal-text ${isVisible ? 'visible' : ''} grid grid-cols-1 md:grid-cols-2 gap-16`}>
+        <div className={`reveal-text ${isVisible ? 'visible' : ''} grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12`}>
+          
+          {/* Información de Contacto */}
           <div>
-            <h3 className="font-serif text-3xl font-light mb-10 text-gray-900">Contacto Directo</h3>
-            <div className="space-y-8">
-              <div className="flex items-start gap-6 group">
-                <div className="w-12 h-12 border-2 border-gray-300 rounded-full flex items-center justify-center group-hover:border-gray-900 group-hover:bg-gray-900 transition-colors duration-300">
+            <h3 className="font-serif text-2xl md:text-3xl font-light mb-6 md:mb-8 text-gray-900">
+              Información de Contacto
+            </h3>
+            
+            <div className="space-y-6">
+              <div className="flex items-start gap-4 group">
+                <div className="w-12 h-12 border-2 border-gray-300 rounded-full flex items-center justify-center group-hover:border-gray-900 group-hover:bg-gray-900 transition-colors duration-300 flex-shrink-0">
                   <Phone className="w-5 h-5 text-gray-600 group-hover:text-white transition-colors duration-300" />
                 </div>
                 <div>
-                  <p className="font-sans text-xs tracking-[0.2em] uppercase text-gray-500 mb-2">Teléfono</p>
-                  <p className="font-sans text-lg text-gray-900">{CONTACT_INFO.phone}</p>
+                  <p className="font-sans text-xs tracking-[0.2em] uppercase text-gray-500 mb-1">Teléfono</p>
+                  <p className="font-sans text-base md:text-lg text-gray-900">{CONTACT_INFO.phone}</p>
                 </div>
               </div>
-              
-              <div className="flex items-start gap-6 group">
-                <div className="w-12 h-12 border-2 border-gray-300 rounded-full flex items-center justify-center group-hover:border-gray-900 group-hover:bg-gray-900 transition-colors duration-300">
-                  <Mail className="w-5 h-5 text-gray-600 group-hover:text-white transition-colors duration-300" />
+
+              <div className="flex items-start gap-4 group">
+                <div className="w-12 h-12 border-2 border-gray-300 rounded-full flex items-center justify-center group-hover:border-green-600 group-hover:bg-green-600 transition-colors duration-300 flex-shrink-0">
+                  <MessageCircle className="w-5 h-5 text-gray-600 group-hover:text-white transition-colors duration-300" />
                 </div>
                 <div>
-                  <p className="font-sans text-xs tracking-[0.2em] uppercase text-gray-500 mb-2">Email</p>
-                  <p className="font-sans text-lg text-gray-900">{CONTACT_INFO.email}</p>
+                  <p className="font-sans text-xs tracking-[0.2em] uppercase text-gray-500 mb-1">WhatsApp</p>
+                  <a 
+                    href="https://wa.me/595981234567" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="font-sans text-base md:text-lg text-gray-900 hover:text-green-600 transition-colors"
+                  >
+                    +595 981 234 567
+                  </a>
                 </div>
               </div>
               
-              <div className="pt-8 border-t-2 border-gray-200">
-                <p className="font-sans text-xs tracking-[0.2em] uppercase text-gray-500 mb-6">Síguenos</p>
-                <div className="flex gap-4">
-                  <a href={CONTACT_INFO.instagram} className="w-12 h-12 border-2 border-gray-300 rounded-full flex items-center justify-center hover:border-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300">
+              <div className="pt-6 border-t-2 border-gray-200">
+                <p className="font-sans text-xs tracking-[0.2em] uppercase text-gray-500 mb-4">Síguenos</p>
+                <div className="flex gap-3">
+                  <a 
+                    href={CONTACT_INFO.instagram} 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 border-2 border-gray-300 rounded-full flex items-center justify-center hover:border-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300"
+                  >
                     <Instagram className="w-5 h-5" />
                   </a>
-                  <a href={CONTACT_INFO.facebook} className="w-12 h-12 border-2 border-gray-300 rounded-full flex items-center justify-center hover:border-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300">
-                    <Facebook className="w-5 h-5" />
-                  </a>
+                  
                 </div>
               </div>
             </div>
           </div>
           
+          {/* Formulario */}
           <div>
-            <h3 className="font-serif text-3xl font-light mb-10 text-gray-900">Envíanos un Mensaje</h3>
-            <div className="space-y-6">
+            <h3 className="font-serif text-2xl md:text-3xl font-light mb-6 md:mb-8 text-gray-900">
+              Solicita una Cotización
+            </h3>
+            
+            <div className="space-y-5">
+              {/* Nombre */}
               <div>
-                <label className="font-sans text-xs tracking-[0.2em] uppercase text-gray-500 mb-3 block">Nombre</label>
+                <label className="font-sans text-xs tracking-[0.2em] uppercase text-gray-500 mb-2 block">
+                  Nombre Completo *
+                </label>
                 <input
                   type="text"
                   value={formData.name}
                   onChange={(e) => setFormData({...formData, name: e.target.value})}
-                  className="w-full bg-transparent border-b-2 border-gray-300 focus:border-gray-900 px-0 py-4 text-gray-900 font-sans text-lg outline-none transition-colors duration-300"
+                  className="w-full bg-white border-2 border-gray-200 focus:border-gray-900 rounded-xl px-4 py-3 text-gray-900 font-sans text-base outline-none transition-colors duration-300"
+                  placeholder="Tu nombre"
+                  required
                 />
               </div>
-              
+
+              {/* WhatsApp */}
               <div>
-                <label className="font-sans text-xs tracking-[0.2em] uppercase text-gray-500 mb-3 block">Email</label>
+                <label className="font-sans text-xs tracking-[0.2em] uppercase text-gray-500 mb-2 block">
+                  WhatsApp *
+                </label>
                 <input
-                  type="email"
-                  value={formData.email}
-                  onChange={(e) => setFormData({...formData, email: e.target.value})}
-                  className="w-full bg-transparent border-b-2 border-gray-300 focus:border-gray-900 px-0 py-4 text-gray-900 font-sans text-lg outline-none transition-colors duration-300"
+                  type="tel"
+                  value={formData.whatsapp}
+                  onChange={(e) => setFormData({...formData, whatsapp: e.target.value})}
+                  className="w-full bg-white border-2 border-gray-200 focus:border-gray-900 rounded-xl px-4 py-3 text-gray-900 font-sans text-base outline-none transition-colors duration-300"
+                  placeholder="+595 981 234 567"
+                  required
                 />
               </div>
-              
+
+              {/* Servicio */}
               <div>
-                <label className="font-sans text-xs tracking-[0.2em] uppercase text-gray-500 mb-3 block">Mensaje</label>
+                <label className="font-sans text-xs tracking-[0.2em] uppercase text-gray-500 mb-2 block">
+                  Tipo de Servicio *
+                </label>
+                <select
+                  value={formData.service}
+                  onChange={(e) => setFormData({...formData, service: e.target.value})}
+                  className="w-full bg-white border-2 border-gray-200 focus:border-gray-900 rounded-xl px-4 py-3 text-gray-900 font-sans text-base outline-none transition-colors duration-300 cursor-pointer"
+                  required
+                >
+                  <option value="">Selecciona un servicio</option>
+                  {services.map((service) => (
+                    <option key={service} value={service}>{service}</option>
+                  ))}
+                </select>
+              </div>
+
+              {/* Mensaje */}
+              <div>
+                <label className="font-sans text-xs tracking-[0.2em] uppercase text-gray-500 mb-2 block">
+                  Detalles del Evento *
+                </label>
                 <textarea
                   rows={4}
                   value={formData.message}
                   onChange={(e) => setFormData({...formData, message: e.target.value})}
-                  className="w-full bg-transparent border-b-2 border-gray-300 focus:border-gray-900 px-0 py-4 text-gray-900 font-sans text-lg outline-none transition-colors duration-300 resize-none"
+                  className="w-full bg-white border-2 border-gray-200 focus:border-gray-900 rounded-xl px-4 py-3 text-gray-900 font-sans text-base outline-none transition-colors duration-300 resize-none"
+                  placeholder="Cuéntanos sobre tu evento: fecha, ubicación, cantidad de personas, detalles especiales..."
+                  required
                 />
               </div>
               
+              {/* Botón */}
               <button 
                 onClick={handleSubmit}
-                className="group w-full bg-gray-900 text-white px-10 py-5 font-sans text-xs tracking-[0.2em] uppercase hover:bg-gray-800 transition-all duration-300 flex items-center justify-center gap-3 mt-8"
+                className="group w-full bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-full font-sans text-sm tracking-[0.2em] uppercase transition-all duration-300 flex items-center justify-center gap-3"
               >
-                Enviar Mensaje
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform duration-300" />
+                <MessageCircle className="w-5 h-5" />
+                Enviar por WhatsApp
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
               </button>
+
+              <p className="text-xs text-gray-500 text-center font-sans">
+                Te responderemos a la brevedad por WhatsApp
+              </p>
             </div>
           </div>
+          
         </div>
       </div>
     </section>

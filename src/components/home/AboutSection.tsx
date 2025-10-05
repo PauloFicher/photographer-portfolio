@@ -1,0 +1,69 @@
+import React, { useRef } from 'react';
+import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
+
+export const AboutSection: React.FC = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const isVisible = useIntersectionObserver(sectionRef, { threshold: 0.1 });
+
+  return (
+    <section 
+      id="sobre-mi" 
+      ref={sectionRef}
+      className="py-20 md:py-32 lg:py-40 px-6 bg-gradient-to-b from-gray-50 to-white relative"
+    >
+      <div className="max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          
+          {/* Foto Izquierda */}
+          <div className={`reveal-text ${isVisible ? 'visible' : ''}`}>
+            <div className="relative rounded-3xl overflow-hidden shadow-xl bg-gray-200 aspect-[3/4] max-w-md mx-auto lg:mx-0">
+              <img 
+                src="/assets/aboutme.jpg"
+                alt="Sobre mí"
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+            </div>
+          </div>
+
+          {/* Contenido Derecha */}
+          <div className={`reveal-text ${isVisible ? 'visible' : ''} space-y-6`} style={{ transitionDelay: '200ms' }}>
+            <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-light text-gray-900 mb-6">
+              Sobre mí
+            </h2>
+            
+            <p className="font-sans text-base md:text-lg text-gray-700 leading-relaxed">
+              Soy un fotógrafo apasionado, especializado en retratos artísticos que capturan la esencia de cada quien, sea un personaje o alguien real. Mi formación en cinematografía me permite contar historias a través de mis imágenes.
+            </p>
+
+            <p className="font-sans text-base md:text-lg text-gray-700 leading-relaxed">
+              Soy del tipo de fotógrafos a los que no les importa tanto la herramienta, sino las ideas y las relaciones interpersonales, siempre y cuando haya luz, seré feliz.
+            </p>
+
+            <p className="font-sans text-base md:text-lg text-gray-700 leading-relaxed">
+              Por cierto, tengo un canal de YouTube donde enseño todo lo que sé...
+            </p>
+
+            <div className="pt-4">
+              <h3 className="font-serif text-2xl md:text-3xl font-light text-gray-900 mb-4">
+                Mi Trayectoria Profesional
+              </h3>
+              <p className="font-sans text-base md:text-lg text-gray-700 leading-relaxed">
+                He trabajado tanto en cine como en fotografía comercial, acumulando más de 15 años de experiencia, siendo director de videos musicales, productor y fotógrafo. Dentro de mis clientes más importantes están Adobe, BMW Motorrad, Royal Enfield, Zhiyun Tech, Apple, Hax Helmets, Smallrig, Ulanzi, Oakley, Tissot, Vivo, y más...
+              </p>
+            </div>
+
+            <div className="pt-6">
+              <a 
+                href="#contacto"
+                className="inline-block bg-gray-900 text-white px-8 py-4 rounded-full font-sans text-sm tracking-wide hover:bg-gray-800 transition-all duration-300"
+              >
+                Trabajemos juntos
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  );
+};
