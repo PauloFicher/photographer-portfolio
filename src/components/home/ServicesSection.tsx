@@ -1,16 +1,13 @@
-import React, { useState, useRef } from 'react';
-import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
+import React, { useState } from 'react';
 import { services } from '../../data/services';
 import { AnimatedSection } from '../ui/AnimatedSection';
 
 export const ServicesSection: React.FC = () => {
   const [_activeService, setActiveService] = useState<number | null>(null);
 
-
   return (
     <section 
       id="servicios" 
-      
       className="py-20 md:py-32 lg:py-40 px-6 bg-gradient-to-b from-white to-gray-50 relative"
     >
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-50/20 to-transparent" />
@@ -35,8 +32,9 @@ export const ServicesSection: React.FC = () => {
               delay={200 + (index * 150)}
             >
               
-               <a href="#contacto"
-                className={`group relative overflow-hidden rounded-xl md:rounded-2xl bg-gradient-to-br ${service.color} backdrop-blur-xl border-2 border-gray-200 hover:border-gray-400 hover:shadow-xl transition-all duration-700 cursor-pointer block`}
+              <a  href="#contacto"
+                className="group relative overflow-hidden rounded-xl md:rounded-2xl bg-gradient-to-br backdrop-blur-xl border-2 border-gray-200 hover:border-gray-400 hover:shadow-xl transition-all duration-700 cursor-pointer block"
+                style={{ backgroundImage: `linear-gradient(to bottom right, ${service.color})` }}
                 onMouseEnter={() => setActiveService(index)}
                 onMouseLeave={() => setActiveService(null)}
               >

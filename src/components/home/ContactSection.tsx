@@ -1,6 +1,6 @@
-import React, { useState, useRef } from 'react';
+import React, { useState} from 'react';
 import { Phone, Instagram, ArrowRight, MessageCircle, CheckCircle, Send } from 'lucide-react';
-import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
+
 import { CONTACT_INFO } from '../../utils/constants';
 import { AnimatedSection } from '../ui/AnimatedSection';
 
