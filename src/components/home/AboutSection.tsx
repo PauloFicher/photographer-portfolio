@@ -3,13 +3,12 @@ import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
 import { AnimatedSection } from '../ui/AnimatedSection';
 
 export const AboutSection: React.FC = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const isVisible = useIntersectionObserver(sectionRef, { threshold: 0.1 });
+  
 
   return (
     <section 
       id="sobre-mi" 
-      ref={sectionRef}
+      
       className="py-20 md:py-32 lg:py-40 px-6 bg-gradient-to-b from-gray-50 to-white relative"
     >
       <div className="max-w-6xl mx-auto">

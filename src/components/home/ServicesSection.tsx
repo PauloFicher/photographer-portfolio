@@ -5,13 +5,12 @@ import { AnimatedSection } from '../ui/AnimatedSection';
 
 export const ServicesSection: React.FC = () => {
   const [_activeService, setActiveService] = useState<number | null>(null);
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const isVisible = useIntersectionObserver(sectionRef, { threshold: 0.1 });
+
 
   return (
     <section 
       id="servicios" 
-      ref={sectionRef}
+      
       className="py-20 md:py-32 lg:py-40 px-6 bg-gradient-to-b from-white to-gray-50 relative"
     >
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-50/20 to-transparent" />

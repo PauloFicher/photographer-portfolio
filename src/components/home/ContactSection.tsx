@@ -14,8 +14,7 @@ export const ContactSection: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showModal, setShowModal] = useState(false);
   
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const isVisible = useIntersectionObserver(sectionRef, { threshold: 0.1 });
+  
 
   const services = [
     'Bodas',
@@ -68,7 +67,7 @@ export const ContactSection: React.FC = () => {
   return (
     <section 
       id="contacto" 
-      ref={sectionRef}
+      
       className="py-20 md:py-32 px-4 md:px-6 bg-gradient-to-b from-white to-gray-50"
     >
       <div className="max-w-5xl mx-auto">

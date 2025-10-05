@@ -13,13 +13,12 @@ const categories = [
 ];
 
 export const GalleryPreview: React.FC = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const isVisible = useIntersectionObserver(sectionRef, { threshold: 0.1 });
+
 
   return (
     <section 
       id="galeria" 
-      ref={sectionRef}
+     
       className="py-16 md:py-20 lg:py-24 px-4 md:px-6 bg-gradient-to-b from-white via-pink-50/30 to-white relative overflow-hidden"
     >
       <div className="max-w-6xl mx-auto relative z-10">

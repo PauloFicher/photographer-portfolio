@@ -6,8 +6,7 @@ import { AnimatedSection } from '../ui/AnimatedSection';
 
 export const TestimonialsSection: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const isVisible = useIntersectionObserver(sectionRef, { threshold: 0.1 });
+  
 
   const next = () => {
     setCurrentIndex((prev) => (prev + 1) % testimonials.length);
@@ -24,7 +23,7 @@ export const TestimonialsSection: React.FC = () => {
   return (
     <section 
       id="testimonios" 
-      ref={sectionRef}
+      
       className="py-20 md:py-32 px-6 bg-gradient-to-b from-white via-pink-50/30 to-white relative overflow-hidden"
     >
       <div className="max-w-5xl mx-auto">
