@@ -1,7 +1,6 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
 import { AnimatedSection } from '../ui/AnimatedSection';
 
 const categories = [
@@ -13,12 +12,9 @@ const categories = [
 ];
 
 export const GalleryPreview: React.FC = () => {
-
-
   return (
     <section 
       id="galeria" 
-     
       className="py-16 md:py-20 lg:py-24 px-4 md:px-6 bg-gradient-to-b from-white via-pink-50/30 to-white relative overflow-hidden"
     >
       <div className="max-w-6xl mx-auto relative z-10">
