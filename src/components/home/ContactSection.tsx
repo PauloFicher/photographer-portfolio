@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { Phone, Instagram, Facebook, ArrowRight, MessageCircle } from 'lucide-react';
+import { Phone, Instagram, ArrowRight, MessageCircle } from 'lucide-react';
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
 import { CONTACT_INFO } from '../../utils/constants';
 
