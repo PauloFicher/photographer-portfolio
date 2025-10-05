@@ -1,6 +1,5 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import { Phone, Instagram, ArrowRight, MessageCircle, CheckCircle, Send } from 'lucide-react';
-
 import { CONTACT_INFO } from '../../utils/constants';
 import { AnimatedSection } from '../ui/AnimatedSection';
 
@@ -13,8 +12,6 @@ export const ContactSection: React.FC = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  
-  
 
   const services = [
     'Bodas',
@@ -27,8 +24,23 @@ export const ContactSection: React.FC = () => {
     'Otro'
   ];
 
+  // Función de validación para WhatsApp
+  const handleWhatsAppChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    // Regex: \D busca todo lo que NO sea dígito y lo elimina
+    const sanitized = value.replace(/\D/g, '').slice(0, 9);
+    setFormData({...formData, whatsapp: sanitized});
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validar que tenga exactamente 9 dígitos
+    if (formData.whatsapp.length !== 9) {
+      alert('El número de WhatsApp debe tener exactamente 9 dígitos');
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
@@ -40,7 +52,7 @@ export const ContactSection: React.FC = () => {
         body: JSON.stringify({
           access_key: '494120e7-5d62-4eaa-9f7f-45158e23825d',
           name: formData.name,
-          phone: formData.whatsapp,
+          phone: `+595${formData.whatsapp}`, // Agrega el prefijo automáticamente
           service: formData.service,
           message: formData.message,
           from_name: 'Formulario de Contacto - Bernardo Florentin Fotografia WEB',
@@ -67,7 +79,6 @@ export const ContactSection: React.FC = () => {
   return (
     <section 
       id="contacto" 
-      
       className="py-20 md:py-32 px-4 md:px-6 bg-gradient-to-b from-white to-gray-50"
     >
       <div className="max-w-5xl mx-auto">
@@ -154,6 +165,7 @@ export const ContactSection: React.FC = () => {
                 />
               </div>
 
+              {/* INPUT WHATSAPP CON VALIDACIÓN */}
               <div>
                 <label className="font-sans text-xs tracking-[0.2em] uppercase text-gray-500 mb-2 block">
                   WhatsApp *
@@ -161,12 +173,20 @@ export const ContactSection: React.FC = () => {
                 <input
                   type="tel"
                   value={formData.whatsapp}
-                  onChange={(e) => setFormData({...formData, whatsapp: e.target.value})}
+                  onChange={handleWhatsAppChange}
                   className="w-full bg-white border-2 border-gray-200 focus:border-gray-900 rounded-xl px-4 py-3 text-gray-900 font-sans text-base outline-none transition-colors duration-300"
-                  placeholder="+595 984 175 707"
+                  placeholder="Ej: 098190000"
+                  maxLength={9}
+                  pattern="[0-9]{9}"
                   required
                   disabled={isSubmitting}
                 />
+                {formData.whatsapp && formData.whatsapp.length === 9 && (
+                  <p className="text-xs text-green-600 mt-2">✓ Número válido (+595{formData.whatsapp})</p>
+                )}
+                {formData.whatsapp && formData.whatsapp.length > 0 && formData.whatsapp.length < 9 && (
+                  <p className="text-xs text-amber-600 mt-2">Debe tener 9 dígitos</p>
+                )}
               </div>
 
               <div>
