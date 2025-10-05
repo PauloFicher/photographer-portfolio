@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { Phone, Instagram, ArrowRight, MessageCircle } from 'lucide-react';
+import { Phone, Instagram, ArrowRight, MessageCircle, CheckCircle } from 'lucide-react';
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
 import { CONTACT_INFO } from '../../utils/constants';
 
@@ -10,6 +10,8 @@ export const ContactSection: React.FC = () => {
     service: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
   
   const sectionRef = useRef<HTMLDivElement>(null);
   const isVisible = useIntersectionObserver(sectionRef, { threshold: 0.1 });
@@ -25,19 +27,49 @@ export const ContactSection: React.FC = () => {
     'Otro'
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // Crear mensaje para WhatsApp
-    const mensaje = `Hola! Mi nombre es ${formData.name}.\n\nEstoy interesado en: ${formData.service}\n\nDetalles: ${formData.message}`;
-    const mensajeCodificado = encodeURIComponent(mensaje);
-    const numeroWhatsApp = '595981234567'; // Reemplazar con el número real
-    
-    // Abrir WhatsApp
-    window.open(`https://wa.me/${numeroWhatsApp}?text=${mensajeCodificado}`, '_blank');
-    
-    // Limpiar formulario
-    setFormData({ name: '', whatsapp: '', service: '', message: '' });
+    setIsSubmitting(true);
+
+    try {
+      // Enviar datos a Web3Forms
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: '494120e7-5d62-4eaa-9f7f-45158e23825d', // Reemplazar con tu key de Web3Forms
+          name: formData.name,
+          phone: formData.whatsapp,
+          service: formData.service,
+          message: formData.message,
+          from_name: 'Formulario Atelier',
+          subject: `Nueva consulta: ${formData.service}`
+        })
+      });
+
+      if (response.ok) {
+        setSubmitSuccess(true);
+        
+        // Abrir WhatsApp (opcional, después de guardar)
+        const mensaje = `Hola! Mi nombre es ${formData.name}.\n\nEstoy interesado en: ${formData.service}\n\nDetalles: ${formData.message}`;
+        const mensajeCodificado = encodeURIComponent(mensaje);
+        const numeroWhatsApp = '595981234567'; // Número del fotógrafo
+        window.open(`https://wa.me/${numeroWhatsApp}?text=${mensajeCodificado}`, '_blank');
+        
+        // Limpiar formulario
+        setFormData({ name: '', whatsapp: '', service: '', message: '' });
+        
+        // Ocultar mensaje de éxito después de 5 segundos
+        setTimeout(() => setSubmitSuccess(false), 5000);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Hubo un error. Por favor intenta nuevamente.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -103,7 +135,6 @@ export const ContactSection: React.FC = () => {
                   >
                     <Instagram className="w-5 h-5" />
                   </a>
-                  
                 </div>
               </div>
             </div>
@@ -114,9 +145,17 @@ export const ContactSection: React.FC = () => {
             <h3 className="font-serif text-2xl md:text-3xl font-light mb-6 md:mb-8 text-gray-900">
               Solicita una Cotización
             </h3>
+
+            {submitSuccess && (
+              <div className="mb-6 p-4 bg-green-50 border-2 border-green-200 rounded-xl flex items-center gap-3">
+                <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0" />
+                <p className="font-sans text-sm text-green-800">
+                  ¡Mensaje guardado! Te contactaremos pronto.
+                </p>
+              </div>
+            )}
             
             <div className="space-y-5">
-              {/* Nombre */}
               <div>
                 <label className="font-sans text-xs tracking-[0.2em] uppercase text-gray-500 mb-2 block">
                   Nombre Completo *
@@ -128,10 +167,10 @@ export const ContactSection: React.FC = () => {
                   className="w-full bg-white border-2 border-gray-200 focus:border-gray-900 rounded-xl px-4 py-3 text-gray-900 font-sans text-base outline-none transition-colors duration-300"
                   placeholder="Tu nombre"
                   required
+                  disabled={isSubmitting}
                 />
               </div>
 
-              {/* WhatsApp */}
               <div>
                 <label className="font-sans text-xs tracking-[0.2em] uppercase text-gray-500 mb-2 block">
                   WhatsApp *
@@ -143,10 +182,10 @@ export const ContactSection: React.FC = () => {
                   className="w-full bg-white border-2 border-gray-200 focus:border-gray-900 rounded-xl px-4 py-3 text-gray-900 font-sans text-base outline-none transition-colors duration-300"
                   placeholder="+595 981 234 567"
                   required
+                  disabled={isSubmitting}
                 />
               </div>
 
-              {/* Servicio */}
               <div>
                 <label className="font-sans text-xs tracking-[0.2em] uppercase text-gray-500 mb-2 block">
                   Tipo de Servicio *
@@ -156,6 +195,7 @@ export const ContactSection: React.FC = () => {
                   onChange={(e) => setFormData({...formData, service: e.target.value})}
                   className="w-full bg-white border-2 border-gray-200 focus:border-gray-900 rounded-xl px-4 py-3 text-gray-900 font-sans text-base outline-none transition-colors duration-300 cursor-pointer"
                   required
+                  disabled={isSubmitting}
                 >
                   <option value="">Selecciona un servicio</option>
                   {services.map((service) => (
@@ -164,7 +204,6 @@ export const ContactSection: React.FC = () => {
                 </select>
               </div>
 
-              {/* Mensaje */}
               <div>
                 <label className="font-sans text-xs tracking-[0.2em] uppercase text-gray-500 mb-2 block">
                   Detalles del Evento *
@@ -176,21 +215,22 @@ export const ContactSection: React.FC = () => {
                   className="w-full bg-white border-2 border-gray-200 focus:border-gray-900 rounded-xl px-4 py-3 text-gray-900 font-sans text-base outline-none transition-colors duration-300 resize-none"
                   placeholder="Cuéntanos sobre tu evento: fecha, ubicación, cantidad de personas, detalles especiales..."
                   required
+                  disabled={isSubmitting}
                 />
               </div>
               
-              {/* Botón */}
               <button 
                 onClick={handleSubmit}
-                className="group w-full bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-full font-sans text-sm tracking-[0.2em] uppercase transition-all duration-300 flex items-center justify-center gap-3"
+                disabled={isSubmitting}
+                className="group w-full bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-full font-sans text-sm tracking-[0.2em] uppercase transition-all duration-300 flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <MessageCircle className="w-5 h-5" />
-                Enviar por WhatsApp
+                {isSubmitting ? 'Enviando...' : 'Enviar Consulta'}
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
               </button>
 
               <p className="text-xs text-gray-500 text-center font-sans">
-                Te responderemos a la brevedad por WhatsApp
+                Guardaremos tu consulta y te contactaremos por WhatsApp
               </p>
             </div>
           </div>
