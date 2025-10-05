@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import { ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
 import { testimonials } from '../../data/testimonials';
+import { AnimatedSection } from '../ui/AnimatedSection';
 
 export const TestimonialsSection: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -27,16 +28,16 @@ export const TestimonialsSection: React.FC = () => {
       className="py-20 md:py-32 px-6 bg-gradient-to-b from-white via-pink-50/30 to-white relative overflow-hidden"
     >
       <div className="max-w-5xl mx-auto">
-        <div className={`reveal-text ${isVisible ? 'visible' : ''} text-center mb-12 md:mb-16`}>
-          <h2 className="font-serif text-4xl md:text-6xl lg:text-7xl font-light mb-4 leading-tight text-gray-900">
+        <AnimatedSection animation="fadeUp" delay={100} className="text-center mb-12 md:mb-16">
+          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-light mb-4 leading-tight text-gray-900">
             Experiencias
           </h2>
           <p className="font-sans text-base md:text-lg text-gray-600 leading-relaxed">
             La confianza de nuestros clientes
           </p>
-        </div>
+        </AnimatedSection>
 
-        <div className="relative px-8 md:px-12">
+        <AnimatedSection animation="scaleIn" delay={300} className="relative px-8 md:px-12">
           <div className="relative overflow-hidden">
             <div 
               className="flex transition-transform duration-500 ease-out"
@@ -102,7 +103,7 @@ export const TestimonialsSection: React.FC = () => {
           >
             <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
           </button>
-        </div>
+        </AnimatedSection>
 
         <div className="flex justify-center gap-2 mt-8 md:mt-12">
           {testimonials.map((_, index) => (

@@ -59,3 +59,60 @@
   --beach-peach: #ffd6ba;
   --beach-sky: #cae9ff;
 }
+/* Animaciones más pronunciadas */
+.reveal-text {
+  opacity: 0;
+  transform: translateY(60px); /* Aumentado de 30px a 60px */
+  transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1); /* Duración de 1s a 1.2s */
+}
+
+.reveal-text.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fade In */
+.fade-in {
+  opacity: 0;
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fade-in.visible {
+  opacity: 1;
+}
+
+/* Slide Left - más pronunciado */
+.slide-left {
+  opacity: 0;
+  transform: translateX(-100px); /* Aumentado de -50px a -100px */
+  transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.slide-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Slide Right - más pronunciado */
+.slide-right {
+  opacity: 0;
+  transform: translateX(100px); /* Aumentado de 50px a 100px */
+  transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.slide-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Escala (zoom in) */
+.scale-in {
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scale-in.visible {
+  opacity: 1;
+  transform: scale(1);
+}

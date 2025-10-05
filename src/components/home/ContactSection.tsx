@@ -1,7 +1,8 @@
 import React, { useState, useRef } from 'react';
-import { Phone, Instagram, ArrowRight, MessageCircle, CheckCircle } from 'lucide-react';
+import { Phone, Instagram, ArrowRight, MessageCircle, CheckCircle, Send } from 'lucide-react';
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
 import { CONTACT_INFO } from '../../utils/constants';
+import { AnimatedSection } from '../ui/AnimatedSection';
 
 export const ContactSection: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -11,7 +12,7 @@ export const ContactSection: React.FC = () => {
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   
   const sectionRef = useRef<HTMLDivElement>(null);
   const isVisible = useIntersectionObserver(sectionRef, { threshold: 0.1 });
@@ -32,37 +33,25 @@ export const ContactSection: React.FC = () => {
     setIsSubmitting(true);
 
     try {
-      // Enviar datos a Web3Forms
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          access_key: '494120e7-5d62-4eaa-9f7f-45158e23825d', // Reemplazar con tu key de Web3Forms
+          access_key: '494120e7-5d62-4eaa-9f7f-45158e23825d',
           name: formData.name,
           phone: formData.whatsapp,
           service: formData.service,
           message: formData.message,
-          from_name: 'Formulario Atelier',
+          from_name: 'Formulario de Contacto - Bernardo Florentin Fotografia WEB',
           subject: `Nueva consulta: ${formData.service}`
         })
       });
 
       if (response.ok) {
-        setSubmitSuccess(true);
-        
-        // Abrir WhatsApp (opcional, después de guardar)
-        const mensaje = `Hola! Mi nombre es ${formData.name}.\n\nEstoy interesado en: ${formData.service}\n\nDetalles: ${formData.message}`;
-        const mensajeCodificado = encodeURIComponent(mensaje);
-        const numeroWhatsApp = '595981234567'; // Número del fotógrafo
-        window.open(`https://wa.me/${numeroWhatsApp}?text=${mensajeCodificado}`, '_blank');
-        
-        // Limpiar formulario
+        setShowModal(true);
         setFormData({ name: '', whatsapp: '', service: '', message: '' });
-        
-        // Ocultar mensaje de éxito después de 5 segundos
-        setTimeout(() => setSubmitSuccess(false), 5000);
       }
     } catch (error) {
       console.error('Error:', error);
@@ -72,6 +61,10 @@ export const ContactSection: React.FC = () => {
     }
   };
 
+  const handleWhatsAppClick = () => {
+    window.open('https://wa.me/595984175707', '_blank');
+  };
+
   return (
     <section 
       id="contacto" 
@@ -79,19 +72,19 @@ export const ContactSection: React.FC = () => {
       className="py-20 md:py-32 px-4 md:px-6 bg-gradient-to-b from-white to-gray-50"
     >
       <div className="max-w-5xl mx-auto">
-        <div className={`reveal-text ${isVisible ? 'visible' : ''} text-center mb-12 md:mb-16`}>
+        <AnimatedSection animation="fadeUp" delay={100} className="text-center mb-12 md:mb-16">
           <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-light mb-4 leading-tight text-gray-900">
             Conversemos
           </h2>
           <p className="font-sans text-sm md:text-base text-gray-600 leading-relaxed max-w-2xl mx-auto">
             Cuéntanos sobre tu proyecto y te contactaremos
           </p>
-        </div>
+        </AnimatedSection>
         
-        <div className={`reveal-text ${isVisible ? 'visible' : ''} grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12`}>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
           
           {/* Información de Contacto */}
-          <div>
+          <AnimatedSection animation="slideLeft" delay={300}>
             <h3 className="font-serif text-2xl md:text-3xl font-light mb-6 md:mb-8 text-gray-900">
               Información de Contacto
             </h3>
@@ -114,12 +107,12 @@ export const ContactSection: React.FC = () => {
                 <div>
                   <p className="font-sans text-xs tracking-[0.2em] uppercase text-gray-500 mb-1">WhatsApp</p>
                   <a 
-                    href="https://wa.me/595981234567" 
+                    href="https://wa.me/595984175707" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="font-sans text-base md:text-lg text-gray-900 hover:text-green-600 transition-colors"
                   >
-                    +595 981 234 567
+                    +595 984 175 707
                   </a>
                 </div>
               </div>
@@ -138,22 +131,13 @@ export const ContactSection: React.FC = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </AnimatedSection>
           
           {/* Formulario */}
-          <div>
+          <AnimatedSection animation="slideRight" delay={300}>
             <h3 className="font-serif text-2xl md:text-3xl font-light mb-6 md:mb-8 text-gray-900">
               Solicita una Cotización
             </h3>
-
-            {submitSuccess && (
-              <div className="mb-6 p-4 bg-green-50 border-2 border-green-200 rounded-xl flex items-center gap-3">
-                <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0" />
-                <p className="font-sans text-sm text-green-800">
-                  ¡Mensaje guardado! Te contactaremos pronto.
-                </p>
-              </div>
-            )}
             
             <div className="space-y-5">
               <div>
@@ -180,7 +164,7 @@ export const ContactSection: React.FC = () => {
                   value={formData.whatsapp}
                   onChange={(e) => setFormData({...formData, whatsapp: e.target.value})}
                   className="w-full bg-white border-2 border-gray-200 focus:border-gray-900 rounded-xl px-4 py-3 text-gray-900 font-sans text-base outline-none transition-colors duration-300"
-                  placeholder="+595 981 234 567"
+                  placeholder="+595 984 175 707"
                   required
                   disabled={isSubmitting}
                 />
@@ -222,21 +206,74 @@ export const ContactSection: React.FC = () => {
               <button 
                 onClick={handleSubmit}
                 disabled={isSubmitting}
-                className="group w-full bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-full font-sans text-sm tracking-[0.2em] uppercase transition-all duration-300 flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="group w-full bg-gray-900 hover:bg-gray-800 text-white px-8 py-4 rounded-full font-sans text-sm tracking-[0.2em] uppercase transition-all duration-300 flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                <MessageCircle className="w-5 h-5" />
-                {isSubmitting ? 'Enviando...' : 'Enviar Consulta'}
+                <Send className="w-5 h-5" />
+                {isSubmitting ? 'Enviando...' : 'Enviar Formulario'}
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
               </button>
 
+              <button
+                onClick={handleWhatsAppClick}
+                type="button"
+                className="w-full bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-full font-sans text-sm tracking-[0.2em] uppercase transition-all duration-300 flex items-center justify-center gap-3"
+              >
+                <MessageCircle className="w-5 h-5" />
+                Contactar por WhatsApp
+              </button>
+
               <p className="text-xs text-gray-500 text-center font-sans">
-                Guardaremos tu consulta y te contactaremos por WhatsApp
+                Nos pondremos en contacto contigo a la brevedad
               </p>
             </div>
-          </div>
+          </AnimatedSection>
           
         </div>
       </div>
+
+      {/* Modal de Confirmación */}
+      {showModal && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-3xl p-8 md:p-12 max-w-md w-full shadow-2xl animate-fadeIn">
+            <div className="text-center">
+              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <CheckCircle className="w-10 h-10 text-green-600" />
+              </div>
+              
+              <h3 className="font-serif text-3xl md:text-4xl font-light text-gray-900 mb-4">
+                ¡Mensaje Enviado!
+              </h3>
+              
+              <p className="font-sans text-base text-gray-600 mb-8 leading-relaxed">
+                Gracias por contactarnos. Hemos recibido tu consulta y te responderemos por WhatsApp a la brevedad.
+              </p>
+              
+              <button
+                onClick={() => setShowModal(false)}
+                className="w-full bg-gray-900 hover:bg-gray-800 text-white px-8 py-4 rounded-full font-sans text-sm tracking-[0.2em] uppercase transition-all duration-300"
+              >
+                Cerrar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <style>{`
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: scale(0.95);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+        .animate-fadeIn {
+          animation: fadeIn 0.3s ease-out;
+        }
+      `}</style>
     </section>
   );
 };

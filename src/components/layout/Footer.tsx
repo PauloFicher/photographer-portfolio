@@ -9,7 +9,7 @@ export const Footer: React.FC = () => {
     <footer className="py-16 px-6 bg-gray-50 border-t border-gray-200">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="font-serif text-3xl font-light tracking-wider text-gray-900">Atelier</div>
+          <div className="font-serif text-3xl font-light tracking-wider text-gray-900">BF Fotografia</div>
           
           <div className="flex gap-4">
             <a 
@@ -23,7 +23,7 @@ export const Footer: React.FC = () => {
           </div>
           
           <div className="font-sans text-sm text-gray-500">
-            © {currentYear} Atelier Fotográfico. Todos los derechos reservados.
+            © {currentYear} BF Fotografia. Todos los derechos reservados.
           </div>
         </div>
       </div>
