@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Sitemap: https://photographer-portfolio-delta-six.vercel.app/sitemap.xml
+
+User-agent: GoogleBot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /

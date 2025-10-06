@@ -5,18 +5,226 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-    <!-- PRECONNECT para Google Fonts - CRÍTICO para performance -->
+    <!-- PRECONNECT para Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
-    <!-- Preconnect para Unsplash -->
     <link rel="preconnect" href="https://images.unsplash.com">
     
-    <!-- Google Fonts optimizado con display=swap -->
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
-    <title>BF Fotografía - Portfolio Profesional</title>
-    <meta name="description" content="Fotógrafo profesional especializado en bodas, eventos y retratos en Paraguay">
+    <!-- SEO Meta Tags -->
+    <title>BF Fotografía Paraguay | Fotógrafo Profesional Bodas, Eventos y Retratos</title>
+    <meta name="description" content="Fotógrafo profesional en Asunción, Paraguay. Especializado en bodas, quince años, eventos corporativos, retratos y sesiones de fotos. +15 años de experiencia. Contacto: +595 984 175 707">
+    
+    <!-- Open Graph (Facebook, WhatsApp, LinkedIn) -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="BF Fotografía - Fotógrafo Profesional en Paraguay">
+    <meta property="og:description" content="Capturamos tus momentos especiales con arte y pasión. Bodas, eventos, retratos profesionales en Asunción.">
+    <meta property="og:image" content="https://photographer-portfolio-delta-six.vercel.app/og-image.jpg">
+    <meta property="og:url" content="https://photographer-portfolio-delta-six.vercel.app">
+    <meta property="og:locale" content="es_PY">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="BF Fotografía - Fotógrafo Profesional Paraguay">
+    <meta name="twitter:description" content="Especialista en bodas, eventos y retratos. +15 años capturando momentos únicos.">
+    <meta name="twitter:image" content="https://photographer-portfolio-delta-six.vercel.app/og-image.jpg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://photographer-portfolio-delta-six.vercel.app">
+    
+    <!-- Datos Estructurados JSON-LD - LocalBusiness + ProfessionalService -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "@id": "https://photographer-portfolio-delta-six.vercel.app",
+      "name": "BF Fotografía",
+      "alternateName": "Bernardo Florentin Fotografía",
+      "description": "Fotógrafo profesional especializado en bodas, quince años, eventos corporativos y retratos artísticos en Paraguay",
+      "image": "https://photographer-portfolio-delta-six.vercel.app/assets/aboutme.jpg",
+      "logo": "https://photographer-portfolio-delta-six.vercel.app/logo.png",
+      "url": "https://photographer-portfolio-delta-six.vercel.app",
+      "telephone": "+595984764866",
+      "email": "contacto@bffotografia.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Asunción",
+        "addressRegion": "Asunción",
+        "addressCountry": "PY"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -25.2637,
+        "longitude": -57.5759
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      "priceRange": "$$",
+      "areaServed": {
+        "@type": "City",
+        "name": "Asunción"
+      },
+      "sameAs": [
+        "https://www.instagram.com/sb_fotografia.py/"
+      ],
+      "serviceType": [
+        "Fotografía de Bodas",
+        "Fotografía de Quince Años", 
+        "Fotografía de Eventos Corporativos",
+        "Retratos Profesionales",
+        "Sesiones de Fotos",
+        "Fotografía de Cumpleaños"
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5",
+        "reviewCount": "6"
+      }
+    }
+    </script>
+
+    <!-- Datos Estructurados - Persona (Fotógrafo) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Bernardo Florentin",
+      "jobTitle": "Fotógrafo Profesional",
+      "description": "Fotógrafo especializado en retratos artísticos con más de 15 años de experiencia en cinematografía y fotografía comercial",
+      "image": "https://photographer-portfolio-delta-six.vercel.app/assets/aboutme.jpg",
+      "url": "https://photographer-portfolio-delta-six.vercel.app",
+      "sameAs": [
+        "https://www.instagram.com/sb_fotografia.py/"
+      ],
+      "worksFor": {
+        "@type": "Organization",
+        "name": "BF Fotografía"
+      },
+      "knowsAbout": [
+        "Fotografía de Bodas",
+        "Cinematografía",
+        "Fotografía Comercial",
+        "Retratos Artísticos",
+        "Dirección de Videos Musicales"
+      ],
+      "hasCredential": {
+        "@type": "EducationalOccupationalCredential",
+        "credentialCategory": "Experiencia Profesional",
+        "description": "+15 años en cine y fotografía comercial, trabajando con marcas como Adobe, BMW, Apple"
+      }
+    }
+    </script>
+
+    <!-- Datos Estructurados - FAQ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Qué servicios de fotografía ofrecen?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ofrecemos fotografía profesional para bodas, quince años, cumpleaños infantiles y de adultos, primer año y bautismos, eventos corporativos y empresariales, sesiones de fotos personalizadas y otros eventos especiales."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuánto cuesta una sesión de fotos de boda?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Los precios varían según la duración del evento, cantidad de fotógrafos y servicios adicionales. Contactanos al +595 984 175 707 o por WhatsApp para recibir una cotización personalizada según tus necesidades."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Dónde están ubicados?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Estamos ubicados en Asunción, Paraguay, pero realizamos sesiones fotográficas en todo el país."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuánto tiempo tardan en entregar las fotos?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "El tiempo de entrega varía según el tipo de evento. Para sesiones de fotos entregamos en 1-2 semanas. Para bodas y eventos grandes, entre 3-4 semanas con todas las fotos editadas profesionalmente."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Realizan videos además de fotografía?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí, contamos con más de 15 años de experiencia en cinematografía y dirección de videos musicales. Ofrecemos servicios de video profesional para bodas y eventos corporativos."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- Datos Estructurados - Service Offerings -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "itemListElement": [
+        {
+          "@type": "Service",
+          "position": 1,
+          "name": "Fotografía de Bodas",
+          "description": "Capturamos cada momento especial de tu boda con un estilo artístico y profesional",
+          "provider": {
+            "@type": "Organization",
+            "name": "BF Fotografía"
+          },
+          "areaServed": "Asunción, Paraguay",
+          "image": "https://photographer-portfolio-delta-six.vercel.app/assets/bodas.jpg"
+        },
+        {
+          "@type": "Service",
+          "position": 2,
+          "name": "Fotografía de Quince Años",
+          "description": "Sesiones de fotos para quinceañeras, vals tradicional y celebraciones",
+          "provider": {
+            "@type": "Organization",
+            "name": "BF Fotografía"
+          },
+          "areaServed": "Asunción, Paraguay"
+        },
+        {
+          "@type": "Service",
+          "position": 3,
+          "name": "Eventos Corporativos",
+          "description": "Cobertura fotográfica profesional para eventos empresariales, conferencias y team building",
+          "provider": {
+            "@type": "Organization",
+            "name": "BF Fotografía"
+          },
+          "areaServed": "Asunción, Paraguay"
+        },
+        {
+          "@type": "Service",
+          "position": 4,
+          "name": "Retratos Profesionales",
+          "description": "Sesiones de retratos artísticos, corporativos y lifestyle",
+          "provider": {
+            "@type": "Organization",
+            "name": "BF Fotografía"
+          },
+          "areaServed": "Asunción, Paraguay"
+        }
+      ]
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>

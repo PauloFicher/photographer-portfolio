@@ -2,8 +2,8 @@ export const ANIMATION_DURATION = 300;
 export const SCROLL_THRESHOLD = 0.1;
 
 export const CONTACT_INFO = {
-  phone: '+595 XXX XXX XXX',
-  email: 'contacto@sb_fotografia.py.com',
+  phone: '+595984764866',
+  email: 'fotoestiloberflo@gmail.com',
   instagram: 'https://www.instagram.com/sb_fotografia.py/',
   
 };

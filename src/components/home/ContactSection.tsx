@@ -70,8 +70,8 @@ export const ContactSection: React.FC = () => {
   };
 
   const handleWhatsAppClick = () => {
-    window.open('https://wa.me/595984175707', '_blank');
-  };
+  window.open('https://wa.link/cuwjby', '_blank');
+};
 
   return (
     <section 
@@ -98,13 +98,6 @@ export const ContactSection: React.FC = () => {
             
             <div className="space-y-6">
               <div className="flex items-start gap-4 group">
-                <div className="w-12 h-12 border-2 border-gray-300 rounded-full flex items-center justify-center group-hover:border-gray-900 group-hover:bg-gray-900 transition-colors duration-300 flex-shrink-0">
-                  <Phone className="w-5 h-5 text-gray-600 group-hover:text-white transition-colors duration-300" />
-                </div>
-                <div>
-                  <p className="font-sans text-xs tracking-[0.2em] uppercase text-gray-500 mb-1">Teléfono</p>
-                  <p className="font-sans text-base md:text-lg text-gray-900">{CONTACT_INFO.phone}</p>
-                </div>
               </div>
 
               <div className="flex items-start gap-4 group">
@@ -114,13 +107,13 @@ export const ContactSection: React.FC = () => {
                 <div>
                   <p className="font-sans text-xs tracking-[0.2em] uppercase text-gray-500 mb-1">WhatsApp</p>
                   <a 
-                    href="https://wa.me/595984175707" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="font-sans text-base md:text-lg text-gray-900 hover:text-green-600 transition-colors"
-                  >
-                    +595 984 175 707
-                  </a>
+  href="https://wa.link/cuwjby" 
+  target="_blank" 
+  rel="noopener noreferrer"
+  className="font-sans text-base md:text-lg text-gray-900 hover:text-green-600 transition-colors"
+>
+  +595984764866
+</a>
                 </div>
               </div>
               
