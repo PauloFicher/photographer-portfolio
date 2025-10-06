@@ -16,6 +16,7 @@ export const Footer: React.FC = () => {
               href={CONTACT_INFO.instagram}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Visita nuestro Instagram @sb_fotografia.py"
               className="w-12 h-12 border-2 border-gray-300 rounded-full flex items-center justify-center hover:border-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300"
             >
               <Instagram className="w-5 h-5" />

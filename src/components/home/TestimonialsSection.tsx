@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 import { testimonials } from '../../data/testimonials';
 import { AnimatedSection } from '../ui/AnimatedSection';
+
 export const TestimonialsSection: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  
 
   const next = () => {
     setCurrentIndex((prev) => (prev + 1) % testimonials.length);
@@ -21,7 +21,6 @@ export const TestimonialsSection: React.FC = () => {
   return (
     <section 
       id="testimonios" 
-      
       className="py-20 md:py-32 px-6 bg-gradient-to-b from-white via-pink-50/30 to-white relative overflow-hidden"
     >
       <div className="max-w-5xl mx-auto">
@@ -88,7 +87,7 @@ export const TestimonialsSection: React.FC = () => {
           <button
             onClick={prev}
             className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 md:-translate-x-8 w-10 h-10 md:w-12 md:h-12 bg-white rounded-full shadow-lg border-2 border-gray-200 flex items-center justify-center hover:bg-gray-900 hover:text-white hover:border-gray-900 transition-all duration-300"
-            aria-label="Anterior"
+            aria-label="Ver testimonio anterior"
           >
             <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
           </button>
@@ -96,24 +95,27 @@ export const TestimonialsSection: React.FC = () => {
           <button
             onClick={next}
             className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 md:translate-x-8 w-10 h-10 md:w-12 md:h-12 bg-white rounded-full shadow-lg border-2 border-gray-200 flex items-center justify-center hover:bg-gray-900 hover:text-white hover:border-gray-900 transition-all duration-300"
-            aria-label="Siguiente"
+            aria-label="Ver siguiente testimonio"
           >
             <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
           </button>
         </AnimatedSection>
 
-        <div className="flex justify-center gap-2 mt-8 md:mt-12">
+        <div className="flex justify-center gap-3 mt-8 md:mt-12">
           {testimonials.map((_, index) => (
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`transition-all duration-300 rounded-full ${
+              className={`transition-all duration-300 rounded-full min-w-[44px] min-h-[44px] flex items-center justify-center ${
                 index === currentIndex 
-                  ? 'w-8 h-2 bg-purple-600' 
-                  : 'w-2 h-2 bg-gray-300 hover:bg-gray-400'
+                  ? 'w-12 bg-purple-600' 
+                  : 'w-11 bg-gray-300 hover:bg-gray-400'
               }`}
               aria-label={`Ir al testimonio ${index + 1}`}
-            />
+              aria-current={index === currentIndex ? 'true' : 'false'}
+            >
+              <span className="sr-only">Testimonio {index + 1}</span>
+            </button>
           ))}
         </div>
 

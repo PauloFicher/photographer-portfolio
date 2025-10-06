@@ -24,10 +24,8 @@ export const ContactSection: React.FC = () => {
     'Otro'
   ];
 
-  // Función de validación para WhatsApp
   const handleWhatsAppChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    // Regex: \D busca todo lo que NO sea dígito y lo elimina
     const sanitized = value.replace(/\D/g, '').slice(0, 9);
     setFormData({...formData, whatsapp: sanitized});
   };
@@ -35,7 +33,6 @@ export const ContactSection: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Validar que tenga exactamente 9 dígitos
     if (formData.whatsapp.length !== 9) {
       alert('El número de WhatsApp debe tener exactamente 9 dígitos');
       return;
@@ -52,7 +49,7 @@ export const ContactSection: React.FC = () => {
         body: JSON.stringify({
           access_key: '494120e7-5d62-4eaa-9f7f-45158e23825d',
           name: formData.name,
-          phone: `+595${formData.whatsapp}`, // Agrega el prefijo automáticamente
+          phone: `+595${formData.whatsapp}`,
           service: formData.service,
           message: formData.message,
           from_name: 'Formulario de Contacto - Bernardo Florentin Fotografia WEB',
@@ -134,6 +131,7 @@ export const ContactSection: React.FC = () => {
                     href={CONTACT_INFO.instagram} 
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label="Visita nuestro Instagram @sb_fotografia.py"
                     className="w-12 h-12 border-2 border-gray-300 rounded-full flex items-center justify-center hover:border-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300"
                   >
                     <Instagram className="w-5 h-5" />
@@ -149,12 +147,16 @@ export const ContactSection: React.FC = () => {
               Solicita una Cotización
             </h3>
             
-            <div className="space-y-5">
+            <form onSubmit={handleSubmit} className="space-y-5">
               <div>
-                <label className="font-sans text-xs tracking-[0.2em] uppercase text-gray-500 mb-2 block">
+                <label 
+                  htmlFor="contact-name"
+                  className="font-sans text-xs tracking-[0.2em] uppercase text-gray-500 mb-2 block"
+                >
                   Nombre Completo *
                 </label>
                 <input
+                  id="contact-name"
                   type="text"
                   value={formData.name}
                   onChange={(e) => setFormData({...formData, name: e.target.value})}
@@ -165,12 +167,15 @@ export const ContactSection: React.FC = () => {
                 />
               </div>
 
-              {/* INPUT WHATSAPP CON VALIDACIÓN */}
               <div>
-                <label className="font-sans text-xs tracking-[0.2em] uppercase text-gray-500 mb-2 block">
+                <label 
+                  htmlFor="contact-whatsapp"
+                  className="font-sans text-xs tracking-[0.2em] uppercase text-gray-500 mb-2 block"
+                >
                   WhatsApp *
                 </label>
                 <input
+                  id="contact-whatsapp"
                   type="tel"
                   value={formData.whatsapp}
                   onChange={handleWhatsAppChange}
@@ -190,10 +195,14 @@ export const ContactSection: React.FC = () => {
               </div>
 
               <div>
-                <label className="font-sans text-xs tracking-[0.2em] uppercase text-gray-500 mb-2 block">
+                <label 
+                  htmlFor="service-select"
+                  className="font-sans text-xs tracking-[0.2em] uppercase text-gray-500 mb-2 block"
+                >
                   Tipo de Servicio *
                 </label>
                 <select
+                  id="service-select"
                   value={formData.service}
                   onChange={(e) => setFormData({...formData, service: e.target.value})}
                   className="w-full bg-white border-2 border-gray-200 focus:border-gray-900 rounded-xl px-4 py-3 text-gray-900 font-sans text-base outline-none transition-colors duration-300 cursor-pointer"
@@ -208,10 +217,14 @@ export const ContactSection: React.FC = () => {
               </div>
 
               <div>
-                <label className="font-sans text-xs tracking-[0.2em] uppercase text-gray-500 mb-2 block">
+                <label 
+                  htmlFor="contact-message"
+                  className="font-sans text-xs tracking-[0.2em] uppercase text-gray-500 mb-2 block"
+                >
                   Detalles del Evento *
                 </label>
                 <textarea
+                  id="contact-message"
                   rows={4}
                   value={formData.message}
                   onChange={(e) => setFormData({...formData, message: e.target.value})}
@@ -223,7 +236,7 @@ export const ContactSection: React.FC = () => {
               </div>
               
               <button 
-                onClick={handleSubmit}
+                type="submit"
                 disabled={isSubmitting}
                 className="group w-full bg-gray-900 hover:bg-gray-800 text-white px-8 py-4 rounded-full font-sans text-sm tracking-[0.2em] uppercase transition-all duration-300 flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
               >
@@ -231,20 +244,20 @@ export const ContactSection: React.FC = () => {
                 {isSubmitting ? 'Enviando...' : 'Enviar Formulario'}
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
               </button>
+            </form>
 
-              <button
-                onClick={handleWhatsAppClick}
-                type="button"
-                className="w-full bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-full font-sans text-sm tracking-[0.2em] uppercase transition-all duration-300 flex items-center justify-center gap-3"
-              >
-                <MessageCircle className="w-5 h-5" />
-                Contactar por WhatsApp
-              </button>
+            <button
+              onClick={handleWhatsAppClick}
+              type="button"
+              className="w-full mt-4 bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-full font-sans text-sm tracking-[0.2em] uppercase transition-all duration-300 flex items-center justify-center gap-3"
+            >
+              <MessageCircle className="w-5 h-5" />
+              Contactar por WhatsApp
+            </button>
 
-              <p className="text-xs text-gray-500 text-center font-sans">
-                Nos pondremos en contacto contigo a la brevedad
-              </p>
-            </div>
+            <p className="text-xs text-gray-500 text-center font-sans mt-4">
+              Nos pondremos en contacto contigo a la brevedad
+            </p>
           </AnimatedSection>
           
         </div>
