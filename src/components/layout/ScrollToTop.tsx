@@ -1,16 +1,13 @@
-import React, { useState, useEffect } from 'react';
+// src/components/ui/ScrollToTop.tsx
+import { useState, useEffect } from 'react';
 import { ArrowUp } from 'lucide-react';
 
-export const ScrollToTop: React.FC = () => {
+export const ScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const toggleVisibility = () => {
-      if (window.scrollY > 300) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
-      }
+      setIsVisible(window.scrollY > 300);
     };
 
     window.addEventListener('scroll', toggleVisibility);
@@ -27,8 +24,8 @@ export const ScrollToTop: React.FC = () => {
   return (
     <button
       onClick={scrollToTop}
-      className={`fixed bottom-8 right-8 z-40 w-12 h-12 bg-gray-900 text-white rounded-full shadow-lg hover:bg-gray-800 transition-all duration-300 flex items-center justify-center ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
+      className={`fixed bottom-8 right-8 z-[9998] w-12 h-12 bg-gray-900 text-white rounded-full shadow-lg hover:bg-gray-800 hover:scale-110 transition-all duration-300 flex items-center justify-center ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'
       }`}
       aria-label="Volver arriba"
     >
@@ -36,3 +33,5 @@ export const ScrollToTop: React.FC = () => {
     </button>
   );
 };
+
+export default ScrollToTop;

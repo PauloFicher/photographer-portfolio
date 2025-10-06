@@ -1,3 +1,4 @@
+// src/hooks/useIntersectionObserver.ts
 import { useState, useEffect } from 'react';
 import type { RefObject } from 'react';
 
@@ -13,15 +14,20 @@ export const useIntersectionObserver = (
     if (!currentRef) return;
 
     const observer = new IntersectionObserver(([entry]) => {
-      setIsVisible(entry.isIntersecting);
+      // Solo activar cuando entra en viewport, nunca desactivar
+      if (entry.isIntersecting && !isVisible) {
+        setIsVisible(true);
+      }
     }, options);
 
     observer.observe(currentRef);
 
     return () => {
-      observer.unobserve(currentRef);
+      if (currentRef) {
+        observer.unobserve(currentRef);
+      }
     };
-  }, [ref, options]);
+  }, [ref, options, isVisible]);
 
   return isVisible;
 };

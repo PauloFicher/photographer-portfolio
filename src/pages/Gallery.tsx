@@ -84,3 +84,4 @@ export const Gallery: React.FC = () => {
     </div>
   );
 };
+export default Gallery;
