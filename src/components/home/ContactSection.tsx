@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Phone, Instagram, ArrowRight, MessageCircle, CheckCircle, Send } from 'lucide-react';
+import {  Instagram, ArrowRight, MessageCircle, CheckCircle, Send } from 'lucide-react';
 import { CONTACT_INFO } from '../../utils/constants';
 import { AnimatedSection } from '../ui/AnimatedSection';
 
