@@ -12,14 +12,14 @@ export const HeroSection: React.FC = () => {
           <div className="space-y-8">
             <div>
               <AnimatedSection animation="fadeUp" delay={200}>
-                <h1 className="font-serif text-6xl md:text-7xl lg:text-8xl font-light leading-tight text-gray-900 mb-6">
-                  Bienvenidos
+                <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-light leading-tight text-gray-900 mb-6">
+                  SB Florent – Fotógrafo Profesional
                 </h1>
               </AnimatedSection>
               
               <AnimatedSection animation="fadeUp" delay={400}>
                 <p className="font-sans text-lg md:text-xl text-gray-600 leading-relaxed max-w-xl">
-                  Me gusta que una imagen logre decir mucho más que mil palabras, y que a través de los ojos de las personas, podamos conocer su mundo.
+                  La fotografía es mucho más que una imagen: es una ventana a los recuerdos, un portal para revivir los instantes más valiosos de nuestra vida. Con el paso del tiempo, cada fotografía se convierte en un tesoro; un puente hacia aquellos días en los que fuimos felices, para volver a sonreír cada vez que los miramos.
                 </p>
               </AnimatedSection>
             </div>

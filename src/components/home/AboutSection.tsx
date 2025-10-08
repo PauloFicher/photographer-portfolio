@@ -31,7 +31,9 @@ export const AboutSection: React.FC = () => {
             
             <AnimatedSection animation="fadeUp" delay={450}>
               <p className="font-sans text-base md:text-lg text-gray-700 leading-relaxed">
-                Soy un fotógrafo apasionado, especializado en retratos artísticos que capturan la esencia de cada quien, sea un personaje o alguien real. Mi formación en cinematografía me permite contar historias a través de mis imágenes.
+              Desde pequeño, la fotografía estuvo presente en mi vida. Recuerdo a mi padre con su cámara compacta en cada viaje o festejo familiar; esas imágenes sembraron en mí una semilla que más tarde florecerá.
+De joven, la pasión regresó a través de la naturaleza y los paisajes. Con mi cámara aprendí a observar el mundo de una forma distinta, a encontrar belleza en cada perspectiva, y descubrí que este arte podía ser mi manera de expresarme.
+
               </p>
             </AnimatedSection>
 
@@ -43,7 +45,12 @@ export const AboutSection: React.FC = () => {
                   Mi Trayectoria Profesional
                 </h3>
                 <p className="font-sans text-base md:text-lg text-gray-700 leading-relaxed">
-                  He trabajado tanto en cine como en fotografía comercial, acumulando más de 15 años de experiencia, siendo director de videos musicales, productor y fotógrafo. Dentro de mis clientes más importantes están Adobe, BMW Motorrad, Royal Enfield, Zhiyun Tech, Apple, Hax Helmets, Smallrig, Ulanzi, Oakley, Tissot, Vivo, y más...
+                 Hace siete años convertí mi pasión por la fotografía en una carrera profesional. Me formé en la escuela “El Faro” y en diversos talleres de moda, retratos, parejas y bodas. Colaboré con la academia “Urban Agency”, donde impartí la clase de “Fotografía y Moda”, explorando la fotografía editorial.
+
+Trabajé junto a profesionales que me ayudaron a definir mi propio estilo, basado en el arte y la atención al detalle.
+Hoy, a través de SB Fotografía, transformo momentos en recuerdos únicos, ofreciendo un servicio personalizado, de alta calidad y con una experiencia que hace cada evento inolvidable.
+
+
                 </p>
               </div>
             </AnimatedSection>

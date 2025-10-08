@@ -15,17 +15,18 @@ export const ServicesSection: React.FC = () => {
         {/* Título centrado */}
         <AnimatedSection animation="fadeUp" delay={100} className="mb-12 md:mb-20 lg:mb-24 text-center max-w-3xl mx-auto">
           <h2 className="font-serif text-4xl md:text-6xl lg:text-7xl font-light mb-4 md:mb-6 leading-tight text-gray-900">
-            Mis
+             Fotografía Profesional
             <br />
-            <span className="italic text-purple-600">servicios</span>
+            <span className="italic text-purple-600">Servicios</span>
           </h2>
           <p className="font-sans text-sm md:text-base lg:text-lg text-gray-600 leading-relaxed">
-            Especializado en crear narrativas visuales
+            La fotografía no solo es un arte, también es un servicio que tiene como misión principal eternizarte en tu propia historia. 
+            Desde los primeros pasos hasta las grandes decisiones de tu vida, cada etapa merece ser recordada con la belleza que merece.
           </p>
         </AnimatedSection>
         
         {/* Grid con cards más pequeñas */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-3 md:gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4 lg:gap-5">
           {services.map((service, index) => (
             <AnimatedSection 
               key={service.id}
@@ -34,7 +35,7 @@ export const ServicesSection: React.FC = () => {
             >
               
             <a    href="#contacto"
-                className="group relative overflow-hidden rounded-2xl md:rounded-3xl cursor-pointer block aspect-[3/4]"
+                className="group relative overflow-hidden rounded-2xl md:rounded-3xl cursor-pointer block aspect-[3/4] md:aspect-[4/5]"
               >
                 {/* Imagen de fondo */}
                 <div className="absolute inset-0">
@@ -57,14 +58,11 @@ export const ServicesSection: React.FC = () => {
                     </div>
                   </div>
 
-                  {/* Título y descripción */}
+                  {/* Título */}
                   <div className="transform transition-all duration-500 group-hover:-translate-y-2">
-                    <h3 className="font-serif text-xl md:text-2xl lg:text-3xl font-light text-white mb-2 transition-all duration-500 group-hover:text-purple-200">
+                    <h3 className="font-serif text-xl md:text-2xl lg:text-3xl font-light text-white transition-all duration-500 group-hover:text-purple-200">
                       {service.title}
                     </h3>
-                    <p className="font-sans text-xs md:text-sm text-white/90 leading-relaxed transition-all duration-500 group-hover:text-white">
-                      {service.description}
-                    </p>
                   </div>
                 </div>
 
