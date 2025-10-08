@@ -45,11 +45,12 @@ De joven, la pasión regresó a través de la naturaleza y los paisajes. Con mi 
                   Mi Trayectoria Profesional
                 </h3>
                 <p className="font-sans text-base md:text-lg text-gray-700 leading-relaxed">
-                 Hace siete años convertí mi pasión por la fotografía en una carrera profesional. Me formé en la escuela “El Faro” y en diversos talleres de moda, retratos, parejas y bodas. Colaboré con la academia “Urban Agency”, donde impartí la clase de “Fotografía y Moda”, explorando la fotografía editorial.
-
-Trabajé junto a profesionales que me ayudaron a definir mi propio estilo, basado en el arte y la atención al detalle.
-Hoy, a través de SB Fotografía, transformo momentos en recuerdos únicos, ofreciendo un servicio personalizado, de alta calidad y con una experiencia que hace cada evento inolvidable.
-
+                 
+Hace siete años decidí llevar este hobby a otro nivel y comenzar mi camino como fotógrafo profesional. Estudié en la escuela de fotógrafos “El Faro”, donde concluí mi formación, y además participé en talleres y cursos especializados en dirección de modelos, fotografía de moda, retratos cinematográficos, fotografía de parejas y fotografía de bodas. También tuve la oportunidad de trabajar con la academia de moda “Urban Agency” con quienes desarrollé la clase de “Fotografía y Moda”, donde exploramos la fotografía editorial y de moda.
+Tuve la fortuna de trabajar junto a profesionales de gran trayectoria, quienes me guiaron y compartieron sus conocimientos para consolidar mi propio estilo.
+Hoy, agradezco profundamente a todas las personas que confían en mí sus recuerdos únicos e irrepetibles. Ser fotógrafo profesional me permite transformar momentos en memorias eternas, y compartir con ustedes el talento y la pasión que me acompañan en cada disparo.
+SB Fotografía es la fusión entre la pasión por el arte y la excelencia en el servicio. Mi atención al detalle en cada etapa del proceso hace que el resultado no sean solo fotografías, sino una experiencia que eleva tus momentos y convierte tu evento en algo inolvidable.
+Me entusiasma ser parte de tus proyectos y celebraciones. Disfruto ofreciendo un servicio personalizado, exclusivo y con un acabado de la más alta calidad, porque cada recuerdo merece ser contado con la belleza que lo distingue.
 
                 </p>
               </div>
