@@ -13,9 +13,32 @@ export const Gallery: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
+  // Filtrar y ORDENAR imágenes por tipo de aspect ratio
   const filteredImages = useMemo(() => {
-    return galleryData.filter(img => img.category === activeCategory);
+    const images = galleryData.filter(img => img.category === activeCategory);
+    
+    // Ordenar por tipo de aspect: portrait primero, luego landscape, luego square
+    const aspectOrder = { portrait: 0, landscape: 1, square: 2 };
+    return images.sort((a, b) => {
+      const orderA = aspectOrder[a.aspect as keyof typeof aspectOrder] ?? 3;
+      const orderB = aspectOrder[b.aspect as keyof typeof aspectOrder] ?? 3;
+      return orderA - orderB;
+    });
   }, [activeCategory]);
+
+  // Función para obtener el aspect ratio basado en el campo aspect de la imagen
+  const getAspectClass = (aspect: string): string => {
+    switch (aspect?.toLowerCase()) {
+      case 'portrait':
+        return 'aspect-[2/3]'; // Vertical: 1200x1800
+      case 'landscape':
+        return 'aspect-[3/2]'; // Horizontal: 1200x800
+      case 'square':
+        return 'aspect-square';
+      default:
+        return 'aspect-[3/2]'; // Default horizontal
+    }
+  };
 
   // Detectar cambio de slide en mobile
   useEffect(() => {
@@ -147,23 +170,61 @@ export const Gallery: React.FC = () => {
           </div>
         </div>
 
-        {/* Image Grid - Slider en mobile, Grid en desktop */}
+        {/* Image Grid - Slider en mobile, Grid masonry en desktop */}
         {filteredImages.length > 0 ? (
           <>
+            {/* Mobile: Horizontal slider */}
             <div 
               ref={scrollContainerRef}
-              className="md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-6 md:overflow-visible overflow-x-auto flex gap-4 snap-x snap-mandatory scrollbar-hide pb-4 -mx-6 px-6 md:mx-0 md:px-0"
+              className="md:hidden overflow-x-auto flex gap-4 snap-x snap-mandatory scrollbar-hide pb-4 -mx-6 px-6"
             >
               {filteredImages.map((image, index) => (
                 <div key={image.id} className="min-w-[85vw] md:min-w-0 snap-center">
                   <div 
                     onClick={() => openLightbox(index)}
-                    className="group relative aspect-[3/4] overflow-hidden rounded-lg cursor-pointer bg-gray-100 shadow-lg hover:shadow-xl transition-all duration-300"
+                    className={`group relative overflow-hidden rounded-lg cursor-pointer bg-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 ${getAspectClass(image.aspect)}`}
                   >
                     <img
                       src={image.src}
                       alt={image.title || image.category}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      loading="lazy"
+                    />
+                    
+                    {/* Overlay con info */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
+                        {image.title && <p className="font-serif text-lg font-semibold">{image.title}</p>}
+                        <p className="text-sm text-gray-200">{image.category}</p>
+                      </div>
+                    </div>
+
+                    {/* Icono de zoom */}
+                    <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="bg-white/90 backdrop-blur-sm rounded-full p-2">
+                        <svg className="w-5 h-5 text-gray-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Desktop: Grid masonry responsivo */}
+            <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-6 auto-rows-max">
+              {filteredImages.map((image, index) => (
+                <div key={image.id}>
+                  <div 
+                    onClick={() => openLightbox(index)}
+                    className={`group relative overflow-hidden rounded-lg cursor-pointer bg-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 ${getAspectClass(image.aspect)}`}
+                  >
+                    <img
+                      src={image.src}
+                      alt={image.title || image.category}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      loading="lazy"
                     />
                     
                     {/* Overlay con info */}
@@ -229,8 +290,6 @@ export const Gallery: React.FC = () => {
         onNext={nextImage}
         onPrev={prevImage}
       />
-
-     
     </div>
   );
 };

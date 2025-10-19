@@ -282,13 +282,13 @@ export const galleryData: GalleryImage[] = [
     aspect: 'landscape'
   },
 
-  // CORPORATIVAS Y EMPRESARIALES (6 imágenes)
+  // CORPORATIVAS Y EMPRESARIALES (14 imágenes)
   {
     id: 31,
     category: 'Corporativas y Empresariales',
     title: 'Evento corporativo',
-    src: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&q=80&fm=webp&fit=crop',
-    thumbnail: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400&q=80&fm=webp&fit=crop',
+    src: '/images/empresariales/empresariales1.webp',
+    thumbnail: '/images/empresariales/empresariales1.webp',
     size: 'large',
     aspect: 'landscape'
   },
@@ -296,8 +296,8 @@ export const galleryData: GalleryImage[] = [
     id: 32,
     category: 'Corporativas y Empresariales',
     title: 'Conferencia profesional',
-    src: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=1200&q=80&fm=webp&fit=crop',
-    thumbnail: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=400&q=80&fm=webp&fit=crop',
+    src: '/images/empresariales/empresariales2.webp',
+    thumbnail: '/images/empresariales/empresariales2.webp',
     size: 'medium',
     aspect: 'landscape'
   },
@@ -305,8 +305,8 @@ export const galleryData: GalleryImage[] = [
     id: 33,
     category: 'Corporativas y Empresariales',
     title: 'Team building',
-    src: 'https://images.unsplash.com/photo-1511578314322-379afb476865?w=1200&q=80&fm=webp&fit=crop',
-    thumbnail: 'https://images.unsplash.com/photo-1511578314322-379afb476865?w=400&q=80&fm=webp&fit=crop',
+    src: '/images/empresariales/empresariales3.webp',
+    thumbnail: '/images/empresariales/empresariales3.webp',
     size: 'large',
     aspect: 'landscape'
   },
@@ -314,26 +314,98 @@ export const galleryData: GalleryImage[] = [
     id: 34,
     category: 'Corporativas y Empresariales',
     title: 'Presentación ejecutiva',
-    src: 'https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=1200&q=80&fm=webp&fit=crop',
-    thumbnail: 'https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=400&q=80&fm=webp&fit=crop',
+    src: '/images/empresariales/empresariales4.webp',
+    thumbnail: '/images/empresariales/empresariales4.webp',
     size: 'small',
-    aspect: 'portrait'
+    aspect: 'landscape'
   },
   {
     id: 35,
     category: 'Corporativas y Empresariales',
     title: 'Networking',
-    src: 'https://images.unsplash.com/photo-1511578314322-379afb476865?w=1200&q=80&fm=webp&fit=crop',
-    thumbnail: 'https://images.unsplash.com/photo-1511578314322-379afb476865?w=400&q=80&fm=webp&fit=crop',
+    src: '/images/empresariales/empresariales5.webp',
+    thumbnail: '/images/empresariales/empresariales5.webp',
     size: 'medium',
-    aspect: 'square'
+    aspect: 'landscape'
   },
   {
     id: 36,
     category: 'Corporativas y Empresariales',
     title: 'Gala empresarial',
-    src: 'https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=1200&q=80&fm=webp&fit=crop',
-    thumbnail: 'https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=400&q=80&fm=webp&fit=crop',
+    src: '/images/empresariales/empresariales6.webp',
+    thumbnail: '/images/empresariales/empresariales6.webp',
+    size: 'medium',
+    aspect: 'landscape'
+  },
+  {
+    id: 37,
+    category: 'Corporativas y Empresariales',
+    title: 'Reunión de negocios',
+    src: '/images/empresariales/empresariales7.webp',
+    thumbnail: '/images/empresariales/empresariales7.webp',
+    size: 'large',
+    aspect: 'landscape'
+  },
+  {
+    id: 38,
+    category: 'Corporativas y Empresariales',
+    title: 'Sesión de trabajo',
+    src: '/images/empresariales/empresariales8.webp',
+    thumbnail: '/images/empresariales/empresariales8.webp',
+    size: 'medium',
+    aspect: 'landscape'
+  },
+  {
+    id: 39,
+    category: 'Corporativas y Empresariales',
+    title: 'Evento de lanzamiento',
+    src: '/images/empresariales/empresariales9.webp',
+    thumbnail: '/images/empresariales/empresariales9.webp',
+    size: 'large',
+    aspect: 'landscape'
+  },
+  {
+    id: 40,
+    category: 'Corporativas y Empresariales',
+    title: 'Conferencia de prensa',
+    src: '/images/empresariales/empresariales10.webp',
+    thumbnail: '/images/empresariales/empresariales10.webp',
+    size: 'small',
+    aspect: 'landscape'
+  },
+  {
+    id: 41,
+    category: 'Corporativas y Empresariales',
+    title: 'Evento de integración',
+    src: '/images/empresariales/empresariales11.webp',
+    thumbnail: '/images/empresariales/empresariales11.webp',
+    size: 'medium',
+    aspect: 'landscape'
+  },
+  {
+    id: 42,
+    category: 'Corporativas y Empresariales',
+    title: 'Cena de negocios',
+    src: '/images/empresariales/empresariales12.webp',
+    thumbnail: '/images/empresariales/empresariales12.webp',
+    size: 'medium',
+    aspect: 'landscape'
+  },
+  {
+    id: 43,
+    category: 'Corporativas y Empresariales',
+    title: 'Seminario profesional',
+    src: '/images/empresariales/empresariales13.webp',
+    thumbnail: '/images/empresariales/empresariales13.webp',
+    size: 'large',
+    aspect: 'landscape'
+  },
+  {
+    id: 44,
+    category: 'Corporativas y Empresariales',
+    title: 'Acto corporativo',
+    src: '/images/empresariales/empresariales14.webp',
+    thumbnail: '/images/empresariales/empresariales14.webp',
     size: 'medium',
     aspect: 'landscape'
   },
@@ -361,7 +433,7 @@ export const galleryData: GalleryImage[] = [
     id: 39,
     category: 'Sesiones de Fotos',
     title: 'Sesión de pareja',
-    src: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=1200&q=80&fm=webp&fit=crop',
+    src:"/images/empresariales/Cumbre_2024_Sbflorent-71.webp",
     thumbnail: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&q=80&fm=webp&fit=crop',
     size: 'large',
     aspect: 'square'
